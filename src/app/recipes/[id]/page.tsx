@@ -1,32 +1,36 @@
-// app/recipes/[id]/page.tsx
-
 import { fetchRecipeById } from '../../../lib/api';
-import { notFound } from 'next/navigation';
+import type { Recipe } from '../../../lib/api';
 
-type RecipePageProps = {
-  params: { id: string };
-};
+export default async function RecipePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
 
-export default async function RecipePage({ params }: RecipePageProps) {
-  const recipe = await fetchRecipeById(params.id);
-
-  if (!recipe) return notFound();
+  let recipe: Recipe;
+  try {
+    recipe = await fetchRecipeById(id);
+  } catch (err) {
+    return (
+      <div>
+        <h1 className="text-xl font-semibold text-red-600 mb-2">Villa</h1>
+        <p>Uppskrift fannst ekki eða villa kom upp.</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="max-w-xl mx-auto px-4">
+    <div className="max-w-xl">
       <h1 className="text-2xl font-bold mb-4">{recipe.title}</h1>
 
       <section className="mb-4">
-        <p>🔥 <strong>{recipe.calories}</strong> kaloríur</p>
-        <p>🥩 <strong>{recipe.protein}g</strong> prótein</p>
-        <p>🧈 <strong>{recipe.fat}g</strong> fita</p>
+        <p>🔥 Kaloríur: <strong>{recipe.calories}</strong></p>
+        <p>🥩 Prótein: <strong>{recipe.protein}g</strong></p>
+        <p>🧈 Fita: <strong>{recipe.fat}g</strong></p>
       </section>
 
       <section className="mb-4">
         <h2 className="font-semibold text-lg mb-1">Innihald:</h2>
         <ul className="list-disc list-inside">
-          {recipe.ingredients.map((item: string) => (
-            <li key={item}>{item}</li>
+          {recipe.ingredients.map((item, i) => (
+            <li key={i}>{item}</li>
           ))}
         </ul>
       </section>

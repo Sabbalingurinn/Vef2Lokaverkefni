@@ -1,6 +1,6 @@
-// app/recipes/[id]/edit/page.tsx
 import EditRecipeClient from '../../../../components/EditRecipeClient';
 
-export default function EditPage({ params }: { params: { id: string } }) {
-  return <EditRecipeClient id={params.id} />;
+export default async function EditPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  return <EditRecipeClient id={id} />;
 }
