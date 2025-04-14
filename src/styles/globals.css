@@ -1,0 +1,188 @@
+/* Reset og grunnstillingar */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: system-ui, sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Aðal layout */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Linkar */
+a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Innihald (main) */
+main {
+  flex: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Form */
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+form button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+form button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: #666;
+  background-color: #eee;
+  margin-top: auto;
+}
+
+/* Header */
+header {
+  background-color: #fff;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+.navigation {
+  max-width: 960px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.nav ul li {
+  list-style: none;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.footerNav ul li {
+  list-style: none;
+}
+
+.footerNav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footerNav {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #eee;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: #666;
+  z-index: 50;
+  border-top: 1px solid #ddd;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.logoutButton {
+  all: unset;
+  color: #0366d6;
+  cursor: pointer;
+  font: inherit;
+}
+
+.logoutButton:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+  .navigation {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  main {
+    margin-top: 3rem;
+    margin-bottom: 7rem;
+  }
+
+  .footerNav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
